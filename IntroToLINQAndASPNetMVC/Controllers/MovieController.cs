@@ -20,7 +20,7 @@ namespace IntroToLINQAndASPNetMVC.Controllers
             }
         }
         public IActionResult Index()
-        {
+        { 
             ViewBag.PageTitle = "All Movies";
             return View(Context.movies);
         }
