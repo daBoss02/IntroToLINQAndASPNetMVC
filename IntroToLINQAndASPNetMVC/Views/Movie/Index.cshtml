@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Movie>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@ViewBag.PageTitle</h1>
+<h4>Movie</h4>
+@if (Model != null)
+{
+    <div>
+        @foreach (Movie m in Model)
+        {
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @m.Title
+                </dt>
+                <dt class="col-sm-2">
+                    @m.ReleaseDate.ToShortDateString()
+                </dt>
+                <dt class="col-sm-2">
+                    @m.BudgetInMillions
+                </dt>
+                <dt class="col-sm-2">
+                    @m.Genre
+                </dt>
+            </dl>
+        }
+    </div>
+    if (ViewBag.Amount != null)
+    {
+        <div>
+            Number of Movies: @ViewBag.Amount
+        </div>
+    }
+} else
+{
+    <div>@ViewBag.Message</div>
+}
