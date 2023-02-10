@@ -44,8 +44,13 @@ namespace IntroToLINQAndASPNetMVC.Models
             }
         }
 
-        private HashSet<Role> _roles;
+        private HashSet<Role> _roles = new HashSet<Role>();
         public HashSet<Role> GetRoles() { return _roles.ToHashSet(); }
+
+        public void AddRole(Role role)
+        {
+            _roles.Add(role);
+        }
 
         private readonly string _genre;
         public string Genre { get { return _genre; } }

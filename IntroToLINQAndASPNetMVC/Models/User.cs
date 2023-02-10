@@ -12,7 +12,7 @@ namespace IntroToLINQAndASPNetMVC.Models
             get { return _userName; }
             set
             {
-                if (value.Length > 2 && value.Length <= 30)
+                if (value != null || value.Length > 2 && value.Length <= 30)
                 {
                     _userName = value;
                 } else

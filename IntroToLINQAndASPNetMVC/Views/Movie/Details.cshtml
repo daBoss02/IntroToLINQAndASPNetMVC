@@ -34,3 +34,25 @@
         </dt>
     </dl>
 </div>
+<div>
+    <h4>Credits</h4>
+    @foreach (Role r in Model.GetRoles())
+    {
+        <div>
+            <a asp-action="Info" asp-controller="Actor" asp-route-id="@r.Actor.Id">@r.Actor.Name (@r.Credit)</a>
+        </div>
+    }
+</div>
+
+<h4>Ratings</h4>
+<div>
+    @foreach (Rating r in Model.GetRatings())
+    {
+        <div>
+            @r.User.UserName: @r.Value; @r.Comment
+        </div>
+    }
+</div>
+<div>
+    <a asp-action="Create" asp-controller="Rating">Add Rating</a>
+</div>

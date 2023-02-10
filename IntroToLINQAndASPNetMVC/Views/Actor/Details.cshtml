@@ -1,0 +1,22 @@
+﻿@model IntroToLINQAndASPNetMVC.Models.Actor
+
+<h1>@Model.Name</h1>
+
+<div>
+
+    @foreach (Role r in Model.Roles)
+    {
+        <div>
+            <a asp-action="Info" asp-controller="Movie" asp-route-id="@r.Movie.Id">@r.Movie.Title</a>: @r.Credit
+        </div>
+        <a asp-action="Create" asp-controller="Rating">Add Rating</a>
+    }
+</div>
+
+@if (!Model.Roles.Any()) 
+{
+    <div>
+        Not in any films yet
+    </div>
+}
+    <a asp-action="Create" asp-controller="Role">Create New Role</a>

@@ -8,12 +8,20 @@ namespace IntroToLINQAndASPNetMVC.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            HashSet<Actor> actors = Context.actors;
+            return View(actors);
         }
-        public IActionResult HighestPaidActor()
+        public IActionResult Info(int id)
         {
-            HashSet<Actor> orderedActors = Context.actors.OrderByDescending(actor => actor.Salary).ToHashSet();
-            return View("ActorDetails", orderedActors);
+            try
+            {
+                Actor actor = Context.actors.First(actor => actor.Id == id);
+                return View("Details", actor);
+            } catch (Exception ex)
+            {
+                return NotFound();
+            }
+
         }
     }
 }

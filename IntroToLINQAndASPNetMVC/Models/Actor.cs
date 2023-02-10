@@ -9,6 +9,14 @@ namespace IntroToLINQAndASPNetMVC.Models
         private readonly int _id;
         public int Id { get { return _id; } }
         private string _name;
+
+        private HashSet<Role> _roles = new HashSet<Role>();
+
+        public HashSet<Role> Roles { get { return _roles.ToHashSet(); } }
+        public void AddRole(Role role)
+        {
+            _roles.Add(role);
+        }
         public string Name 
         {
             get

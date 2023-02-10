@@ -1,0 +1,19 @@
+﻿@model IntroToLINQAndASPNetMVC.Models.ViewModels.CreateRatingVM
+
+<form asp-action="Create" method="post">
+    <div>
+        <input asp-for="UserName" placeholder="Username..." />
+    </div>
+    <div>
+        <select asp-for="MovieId" asp-items="Model.Movies"></select>
+    </div>
+    <div>
+        <label asp-for="Value" />
+        <input asp-for="Value" max="10" min="1" />
+    </div>
+    <div>
+        <input asp-for="Comment" placeholder="Comment..." />
+    </div>
+    <input type="submit" value="Add Rating" />
+
+</form>

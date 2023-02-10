@@ -6,6 +6,8 @@ namespace IntroToLINQAndASPNetMVC.Models
     {
         private readonly int _id;
         public int Id { get { return _id; } }
+
+
         private string _credit;
         public string Credit
         {
@@ -23,9 +25,10 @@ namespace IntroToLINQAndASPNetMVC.Models
             }
         }
 
+
         private int _pay;
-        public int Pay 
-        { 
+        public int Pay
+        {
             get { return _pay; }
             set
             {
@@ -35,20 +38,28 @@ namespace IntroToLINQAndASPNetMVC.Models
                 }
                 else
                 {
-                    throw new Exception("Actor must be paid");
+                    throw new Exception("Pay cannot be negative.");
                 }
             }
         }
 
-        private HashSet<Role> _roles;
-        public HashSet<Role> GetRoles() { return _roles.ToHashSet(); }
-
         public Actor Actor { get; set; }
         public Movie Movie { get; set; }
 
-        public Role() 
+        public Role()
         {
             _id = Context.GetId();
         }
+
+        public Role(string credit, int pay, Actor actor, Movie movie)
+        {
+            Credit = credit;
+            Pay = pay;
+            Movie = movie;
+            Actor = actor;
+            _id = Context.GetId();
+
+        }
+
     }
 }

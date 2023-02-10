@@ -1,4 +1,5 @@
 ﻿using IntroToLINQAndASPNetMVC.Data;
+using Newtonsoft.Json.Linq;
 
 namespace IntroToLINQAndASPNetMVC.Models
 {
@@ -25,11 +26,20 @@ namespace IntroToLINQAndASPNetMVC.Models
         public User User { get; set; }
         public Movie Movie { get; set; }
 
+        public string Comment { get; set; }
+
         public Rating()
         {
             _id = Context.GetId();
         }
 
+        public Rating(int value, User user, Movie movie, string comment)
+        {
+            _value = value;
+            User = user;
+            Movie = movie;
+            Comment = comment;
+        }
         public Rating(int value, User user, Movie movie)
         {
             _value = value;

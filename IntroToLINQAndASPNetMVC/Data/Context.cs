@@ -58,6 +58,17 @@ namespace IntroToLINQAndASPNetMVC.Data
             actors.Add(actor2);
             actors.Add(actor3);
             actors.Add(actor4);
+
+            Role director = new Role("Marty Mcfly", 100, actor1, movie1);
+            Role doc = new Role("Doc", 200, actor4, movie1);
+
+            movie1.AddRole(director);
+            movie1.AddRole(doc);
+            actor1.AddRole(director);
+            actor4.AddRole(doc);
+
+            roles.Add(director);
+            roles.Add(doc);
         }
         static Context()
         {

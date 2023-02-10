@@ -24,7 +24,7 @@ namespace IntroToLINQAndASPNetMVC.Controllers
             ViewBag.PageTitle = "All Movies";
             return View(Context.movies);
         }
-        public IActionResult GetMovieInfo(int id)
+        public IActionResult Info(int id)
         {
             try
             {

@@ -14,7 +14,7 @@
             <hr />
             <dl class="row">
                 <dt class="col-sm-2">
-                    @m.Title
+                    <a asp-action="Info" asp-controller="Movie" asp-route-id="@m.Id">@m.Title</a>
                 </dt>
                 <dt class="col-sm-2">
                     @m.ReleaseDate.ToShortDateString()

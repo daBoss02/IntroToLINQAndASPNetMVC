@@ -1,4 +1,6 @@
-﻿using IntroToLINQAndASPNetMVC.Models;
+﻿using IntroToLINQAndASPNetMVC.Data;
+using IntroToLINQAndASPNetMVC.Models;
+using IntroToLINQAndASPNetMVC.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,7 +9,6 @@ namespace IntroToLINQAndASPNetMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -15,7 +16,8 @@ namespace IntroToLINQAndASPNetMVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            MoviesAndActors vm = new MoviesAndActors(Context.movies, Context.actors, "This is a web app about movies and actors.");
+            return View(vm);
         }
 
         public IActionResult Privacy()
