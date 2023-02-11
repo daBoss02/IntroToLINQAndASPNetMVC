@@ -1,5 +1,6 @@
 ﻿using IntroToLINQAndASPNetMVC.Data;
 using IntroToLINQAndASPNetMVC.Models;
+using IntroToLINQAndASPNetMVC.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
 
@@ -80,6 +81,34 @@ namespace IntroToLINQAndASPNetMVC.Controllers
                 return m.ReleaseDate.Year >= 1990 && m.ReleaseDate.Year < 2000;
             }).ToHashSet();
             return View("Index", movies);
+        }
+
+        [HttpGet]
+        public IActionResult CompareMovies(string id1, string id2)
+        {
+            try
+            {
+                CompareMoviesVM vm = new CompareMoviesVM(id1, id2, Context.movies);
+                return View(vm);
+            } catch
+            {
+                CompareMoviesVM vm = new CompareMoviesVM(Context.movies);
+                return View(vm);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult CompareMovies([Bind("MovieId1", "MovieId2")] CompareMoviesVM vm)
+        {
+            try
+            {
+                Movie movie1 = Context.movies.First(m => m.Id == Int32.Parse(vm.MovieId1));
+                Movie movie2 = Context.movies.First(m => m.Id != Int32.Parse(vm.MovieId2));
+                return RedirectToAction("CompareMovies", new {id1 = vm.MovieId1, id2 = vm.MovieId2});
+            } catch(Exception ex)
+            {
+                return NotFound();
+            }
         }
     }
 }
